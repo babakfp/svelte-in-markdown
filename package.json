@@ -1,20 +1,7 @@
 {
-    "name": "svelte-in-markdown",
-    "version": "0.0.5",
-    "description": "A Svelte Preprocessor that allows you to write Svelte code in Markdown files.",
-    "license": "MIT",
-    "repository": "github:babakfp/svelte-in-markdown",
-    "homepage": "https://babakfp.ir/docs/svelte-in-markdown",
-    "main": "./dist/index.js",
     "scripts": {
         "dev": "tsc -w",
-        "build": "tsc",
-        "prepublishOnly": "tsc",
-        "format": "prettier -w ."
-    },
-    "peerDependencies": {
-        "@sveltejs/kit": "^2.0",
-        "svelte": "^4.0"
+        "build": "tsc"
     },
     "dependencies": {
         "@shikijs/rehype": "1.5.1",
@@ -27,20 +14,5 @@
         "prettier": "3.3.1",
         "typescript": "5.4.5"
     },
-    "files": [
-        "./dist/",
-        "./src/transformers/unified/plugins/remark-github-alerts/styles/"
-    ],
-    "exports": {
-        ".": "./dist/index.js",
-        "./transformers/unified": "./dist/transformers/unified/index.js",
-        "./transformers/unified/remark-github-alerts/*": "./src/transformers/unified/plugins/remark-github-alerts/styles/*"
-    },
-    "keywords": [
-        "svelte",
-        "markdown",
-        "preprocessor",
-        "mdx"
-    ],
     "type": "module"
 }

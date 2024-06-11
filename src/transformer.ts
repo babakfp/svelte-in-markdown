@@ -9,19 +9,13 @@ export const transformer = async (content: string) => {
 
     processor.use(remarkParse)
 
-    processor.use(remarkRehype, {
-        allowDangerousHtml: true,
-    })
+    processor.use(remarkRehype)
 
     processor.use(rehypeShiki, {
         theme: "github-dark",
     })
 
-    processor.use(rehypeStringify, {
-        allowDangerousCharacters: true,
-        allowDangerousHtml: true,
-        allowParseErrors: true,
-    })
+    processor.use(rehypeStringify)
 
     await processor.process(content)
 }
