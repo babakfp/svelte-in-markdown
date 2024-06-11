@@ -1,5 +1,5 @@
 import { unified } from "unified"
-import remarkParse from "remark-parse" // Options not needed because `Options: {}`.
+import remarkParse from "remark-parse"
 import remarkRehype from "remark-rehype"
 import rehypeShiki from "@shikijs/rehype"
 import rehypeStringify from "rehype-stringify"
