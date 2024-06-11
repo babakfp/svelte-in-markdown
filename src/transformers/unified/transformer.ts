@@ -29,30 +29,19 @@ export const transformer = (async (
 
     processor.use(remarkParse)
 
-    processor.use(config_.builtInPlugins.remarkRehype.plugins?.before)
     processor.use(remarkRehype, {
-        ...config_.builtInPlugins.remarkRehype.options,
         allowDangerousHtml: true,
     })
-    processor.use(config_.builtInPlugins.remarkRehype.plugins?.after)
 
-    processor.use(config_.builtInPlugins.rehypeShiki.plugins?.before)
-    if (config_.builtInPlugins.rehypeShiki.enable) {
-        processor.use(rehypeShiki, {
-            theme: "github-dark",
-            ...config_.builtInPlugins.rehypeShiki.options,
-        })
-    }
-    processor.use(config_.builtInPlugins.rehypeShiki.plugins?.after)
+    processor.use(rehypeShiki, {
+        theme: "github-dark",
+    })
 
-    processor.use(config_.builtInPlugins.rehypeStringify.plugins?.before)
     processor.use(rehypeStringify, {
-        ...config_.builtInPlugins.rehypeStringify.options,
         allowDangerousCharacters: true,
         allowDangerousHtml: true,
         allowParseErrors: true,
     })
-    processor.use(config_.builtInPlugins.rehypeStringify.plugins?.after)
 
     const result = await processor.process(markupPreprocessorOptions.content)
 
