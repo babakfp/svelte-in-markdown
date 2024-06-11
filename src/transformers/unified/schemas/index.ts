@@ -3,7 +3,6 @@ import * as v from "valibot"
 import type { Options as RemarkFrontmatterOptions } from "remark-frontmatter"
 import type { Options as RemarkFrontmatterYamlOptions } from "remark-frontmatter-yaml"
 import type { Options as RemarkGfmOptions } from "remark-gfm"
-import type { RemarkGitHubAlertsOptions } from "../plugins/remark-github-alerts/src/index.js"
 import type { Options as RemarkTocOptions } from "remark-toc"
 import type { Options as RemarkRehypeOptions } from "remark-rehype"
 import type { Options as RehypeSlugOptions } from "rehype-slug"
@@ -53,20 +52,6 @@ export const ConfigSchema = v.optional(
                             enable: v.optional(v.boolean(), true),
                             options: v.optional(
                                 v.special<RemarkGfmOptions>(() => true),
-                            ),
-                        }),
-
-                        /**
-                         * This plugin is a fork of ["remark-github-alerts"](https://npmjs.com/package/remark-github-alerts).
-                         * Refer to jsDoc comments for documentations.
-                         */
-                        remarkGithubAlerts: getPluginBaseSchema({
-                            /** @default true */
-                            enable: v.optional(v.boolean(), true),
-                            options: v.optional(
-                                v.special<RemarkGitHubAlertsOptions>(
-                                    () => true,
-                                ),
                             ),
                         }),
 

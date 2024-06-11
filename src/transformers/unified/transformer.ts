@@ -1,24 +1,15 @@
 import * as v from "valibot"
 import { unified } from "unified"
 import remarkParse from "remark-parse" // Options not needed because `Options: {}`.
-import remarkSvelteElementAttributeCurlyBracket from "./plugins/remark-html-attribute-curly-bracket.js"
-import remarkSvelteSpecialTags from "./plugins/remark-svelte-special-tags.js"
-import remarkUnwrapHtml from "./plugins/remark-unwrap-html.js"
-import remarkTextToHtml from "./plugins/remark-text-to-html.js"
 import remarkFrontmatter from "remark-frontmatter"
 import remarkFrontmatterYaml from "remark-frontmatter-yaml"
 import remarkGfm from "remark-gfm"
-import remarkGithubAlerts from "./plugins/remark-github-alerts/src/index.js"
 import remarkUnwrapImages from "remark-unwrap-images" // No `Options` export.
 import remarkToc from "remark-toc"
 import remarkRehype from "remark-rehype"
-import rehypeMarkdownElementsContext from "./plugins/rehype-markdown-elements-context.js" // No `Options` export.
 import rehypeSlug from "rehype-slug"
 import rehypeAutolinkHeadings from "rehype-autolink-headings"
 import rehypeShiki from "@shikijs/rehype"
-import rehypeSanitizeCodeElement from "./plugins/rehype-sanitize-code-element.js" // No `Options` export.
-import rehypeMarkdownElementsExpensiveStrategy from "./plugins/rehype-markdown-elements-expensive-strategy.js" // No `Options` export.
-import rehypeMarkdownElementsCheapStrategy from "./plugins/rehype-markdown-elements-cheap-strategy.js" // No `Options` export.
 import rehypeExternalLinks from "rehype-external-links"
 import rehypeStringify from "rehype-stringify"
 
@@ -46,14 +37,6 @@ export const transformer = (async (
 
     processor.use(remarkParse)
 
-    processor.use(remarkSvelteElementAttributeCurlyBracket)
-
-    processor.use(remarkSvelteSpecialTags)
-
-    processor.use(remarkUnwrapHtml)
-
-    processor.use(remarkTextToHtml)
-
     processor.use(config_.builtInPlugins.remarkFrontmatter.plugins?.before)
     if (config_.builtInPlugins.remarkFrontmatter.enable) {
         processor.use(remarkFrontmatter, {
@@ -78,15 +61,6 @@ export const transformer = (async (
         processor.use(remarkGfm, config_.builtInPlugins.remarkGfm.options)
     }
     processor.use(config_.builtInPlugins.remarkGfm.plugins?.after)
-
-    processor.use(config_.builtInPlugins.remarkGithubAlerts.plugins?.before)
-    if (config_.builtInPlugins.remarkGithubAlerts.enable) {
-        processor.use(
-            remarkGithubAlerts,
-            config_.builtInPlugins.remarkGithubAlerts.options,
-        )
-    }
-    processor.use(config_.builtInPlugins.remarkGithubAlerts.plugins?.after)
 
     processor.use(config_.builtInPlugins.remarkUnwrapImages.plugins?.before)
     if (config_.builtInPlugins.remarkUnwrapImages.enable) {
