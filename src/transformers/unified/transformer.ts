@@ -84,7 +84,6 @@ export const transformer = (async (
     processor.use(
         config_.builtInPlugins.rehypeMarkdownElementsContext.plugins?.before,
     )
-    processor.use(rehypeMarkdownElementsContext)
     processor.use(
         config_.builtInPlugins.rehypeMarkdownElementsContext.plugins?.after,
     )
@@ -116,22 +115,12 @@ export const transformer = (async (
     processor.use(
         config_.builtInPlugins.rehypeSanitizeCodeElement.plugins?.before,
     )
-    processor.use(rehypeSanitizeCodeElement)
     processor.use(
         config_.builtInPlugins.rehypeSanitizeCodeElement.plugins?.after,
     )
 
     processor.use(config_.builtInPlugins.rehypeMarkdownElements.plugins?.before)
     if (config_.builtInPlugins.rehypeMarkdownElements.enable) {
-        if (svelteInMarkdownConfig.markdownElementsStrategy === "expensive") {
-            processor.use(rehypeMarkdownElementsExpensiveStrategy)
-        }
-        if (svelteInMarkdownConfig.markdownElementsStrategy === "cheap") {
-            processor.use(
-                rehypeMarkdownElementsCheapStrategy,
-                svelteInMarkdownConfig,
-            )
-        }
     }
     processor.use(config_.builtInPlugins.rehypeMarkdownElements.plugins?.after)
 
