@@ -16,13 +16,11 @@ export type ConfigCallbacks = {
     ) => boolean
 
     /**
-     * Use this to build your own transformer or customize the built-in plugins.
      * You will receive every markdown file and'll get to transform it.
      */
     onTransform?: (
         /** Info about the markdown file that is going to be preprocessed. */
         markupPreprocessorOptions: RequiredNonNullable<MarkupPreprocessorOptions>,
-        /** The config that is passed to `svelteInMarkdownPreprocess()` by you, which also contains the default values for options. */
         config: ConfigOutput,
     ) => Promise<{
         /** Transformed content. */
